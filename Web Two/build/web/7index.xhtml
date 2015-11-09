@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+<h:form>
+    <h:dataTable value="#{characterData.characters}" var="chr"
+			     styleClass="characterTable"
+			     headerClass="characterTableHeader"
+			     rowClasses="characterTableOddRow,characterTableEvenRow">
+
+
+<h:column ><f:facet name="header"> Name </f:facet>#{chr.name}</h:column>
+<h:column ><f:facet name="header"> Email </f:facet>#{chr.email}</h:column>
+<h:column ><f:facet name="header"> Phone </f:facet>#{chr.phoneNumber}</h:column>
+<h:column ><f:facet name="header"> Subject </f:facet>#{chr.subject}</h:column>
+<h:column ><f:facet name="header"> Message </f:facet>#{chr.message}</h:column>
+</h:dataTable>
+    <h:commandButton  id="submit" value=" Back " action="6contact.xhtml" /> 
+</h:form>
+</h:body>
+</html>

@@ -1,0 +1,22 @@
+.characterTable{
+border-collapse:collapse;
+border-bottom:1px solid #000000;
+}
+.characterTableHeader{
+text-align:left;
+background:none repeat scroll 0 0 #00FFFF;
+border-bottom:1px solid #00FF00;
+border-top:1px solid #FF0000;
+padding:10px;
+margin:0 4px;
+}
+.characterTableOddRow{
+background:none repeat scroll 0 0 #C0C0C0;
+}
+.characterTableEvenRow{
+background:none repeat scroll 0 0 #F5F5F5;
+}
+.characterTableEvenRow td, .characterTableOddRow td {
+	vertical-align: top;
+	padding: 5px 10px;
+}

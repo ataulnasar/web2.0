@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    
+    <h:head>
+       <h:outputStylesheet library="css" name="style.css" />
+
+        <title>Image Upload</title>
+        
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!-- Add fancyBox -->
+        
+        <script type="text/javascript" src="Ikramini/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $(".fancybox").fancybox();
+          });
+        </script>
+    </h:head>
+    <h:body>
+        <h:form enctype="multipart/form-data">  
+            <p:messages showDetail="true"/> 
+            <p:panelGrid columns="2" >
+                <h:outputLabel for="image" value="Select Image: *" />
+                <p:fileUpload value="#{uploadImage.file}" mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/> 
+                <f:facet name="footer">
+                    <p:commandButton value="Submit" ajax="false" 
+                                     actionListener="#{uploadImage.upload}"/></f:facet>
+            </p:panelGrid>
+            <p:spacer height="20"></p:spacer>
+                <p:dataTable value="#{tableBean.allImage}" var="item" paginator="true" rows="5"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="3,5,10" widgetVar="   10" 
+                         >           
+                <f:facet name="header">
+                        <h:outputText value="Image showing from database" />
+                    </f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Image Id" />
+                    </f:facet>
+                    <h:outputText value="#{item.imageID}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Image Name" />
+                    </f:facet>
+                    <h:outputText value="#{item.imageName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Image" />
+                    </f:facet>
+                    <h:outputLink value="DisplayImage?id=#{item.imageID}" target="_blank" >                        
+                        <a class="fancybox" rel="group" href="DisplayImage?id=#{item.imageID}">
+                            <img src="DisplayImage?id=#{item.imageID}"  width="130" height="113" style="max-width:none;" alt="" /></a>
+                    </h:outputLink> 
+                </p:column>
+                <p:column headerText="Name"> 
+                    <h:commandButton id="submit" value="Remove" actionListener="#{item.deleteAction(item.imageName)}">
+                </h:commandButton>
+            </p:column>    
+            </p:dataTable>
+         <h:commandButton  id="submit" value=" Back " action="6contact.xhtml" /> 
+       </h:form> 
+    </h:body>
+</html>

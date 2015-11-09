@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="1.2" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+    
+ 
+    <navigation-rule>
+    <from-view-id>/5login.xhtml</from-view-id>
+    <navigation-case>
+        <from-action>#{User.login}</from-action>
+        <from-outcome>beforeDB</from-outcome>
+        <to-view-id>/beforeDB.xhtml</to-view-id>
+    </navigation-case>
+    
+    <from-view-id>/3contact.xhtml</from-view-id>
+    <navigation-case>
+        <from-action>#{CharacterData.insert}</from-action>
+        <from-outcome>6contact</from-outcome>
+        <to-view-id>/6contact.xhtml</to-view-id>
+    </navigation-case>
+</navigation-rule>
+</faces-config>
